@@ -21,7 +21,11 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home")
 def home():
-    
+    if "user" in session:
+        return render_template("home.html")
+    else:
+        flash("You need to be logged in to view the home page.")
+        return redirect(url_for("login"))
 
 
 @app.route("/register", methods=["GET", "POST"])
