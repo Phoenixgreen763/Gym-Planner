@@ -3,18 +3,17 @@
 header .navbar {
     background-color: lightblue;
     margin-bottom: 2.5%;
-    font-style: ;
+    font-family: Merianda;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 .navbar .navbar-brand {
-    font-size: 50px; /* Adjust the font size as needed */
-    font-weight: bold; /* Optionally increase font weight */
-    /* Add additional styling properties as desired */
+    font-size: 400%; 
 }
 
 .navbar-nav .nav-link {
-    font-size: 25px; /* Example of styling the navigation links */
-    /* Add additional styling properties as desired */
+    font-size: 200%; 
 }
 
 .heading {
