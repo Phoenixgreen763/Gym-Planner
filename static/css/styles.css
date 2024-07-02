@@ -1,0 +1,10 @@
+.navbar-brand {
+    font-size: 75px; /* Adjust the font size as needed */
+    font-weight: bold; /* Optionally increase font weight */
+    /* Add additional styling properties as desired */
+}
+
+.navbar-nav .nav-link {
+    font-size: 50px; /* Example of styling the navigation links */
+    /* Add additional styling properties as desired */
+}
