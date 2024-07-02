@@ -1,10 +1,22 @@
-.navbar-brand {
-    font-size: 75px; /* Adjust the font size as needed */
+@import url('https://fonts.googleapis.com/css?family=Merienda&effect=outline');
+
+header .navbar {
+    background-color: lightblue;
+    margin-bottom: 2.5%;
+    font-style: ;
+}
+
+.navbar .navbar-brand {
+    font-size: 50px; /* Adjust the font size as needed */
     font-weight: bold; /* Optionally increase font weight */
     /* Add additional styling properties as desired */
 }
 
 .navbar-nav .nav-link {
-    font-size: 50px; /* Example of styling the navigation links */
+    font-size: 25px; /* Example of styling the navigation links */
     /* Add additional styling properties as desired */
+}
+
+.heading {
+    text-align: center;
 }
