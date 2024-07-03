@@ -19,3 +19,7 @@ header .navbar {
 .heading {
     text-align: center;
 }
+
+hr {
+     color: lightblue;
+}
