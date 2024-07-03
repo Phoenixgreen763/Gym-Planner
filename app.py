@@ -87,19 +87,8 @@ def logout():
 
 @app.route("/calendar")
 def calendar():
-    events = mongo.db.events.find()
 
-    # Format event data into a list of dictionaries
-    events_data = []
-    for event in events:
-        event_data = {
-            'title': event['event_name'],
-            'description': event['event_description'],
-            'start': event['due_date']
-        }
-        events_data.append(event_data)
-
-    return render_template("calendar.html", events_data=json.dumps(events_data))
+    return render_template("calendar.html")
 
 
 @app.route('/add_event', methods=["GET", "POST"])

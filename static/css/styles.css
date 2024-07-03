@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Merienda&effect=outline');
 
+body {
+}
+
 header .navbar {
     background-color: lightblue;
     margin-bottom: 2.5%;
@@ -20,3 +23,11 @@ header .navbar {
     text-align: center;
 }
 
+.add_event {
+    margin-left: 43.5%;
+    margin-top: 2%;
+}
+
+.add_event .btn {
+    font-size: 200%;
+}
