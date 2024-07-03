@@ -1,7 +1,8 @@
 import os
+import json
 from flask import (
     Flask, flash, render_template,
-    redirect, request, session, url_for)
+    redirect, jsonify, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -86,7 +87,19 @@ def logout():
 
 @app.route("/calendar")
 def calendar():
-    return render_template("calendar.html")
+    events = mongo.db.events.find()
+
+    # Format event data into a list of dictionaries
+    events_data = []
+    for event in events:
+        event_data = {
+            'title': event['event_name'],
+            'description': event['event_description'],
+            'start': event['due_date']
+        }
+        events_data.append(event_data)
+
+    return render_template("calendar.html", events_data=json.dumps(events_data))
 
 
 @app.route('/add_event', methods=["GET", "POST"])

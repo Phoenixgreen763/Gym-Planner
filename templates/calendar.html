@@ -1,8 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- specific page content here -->
 <div id="calendar"></div>
 <div>
-<a href="{{ url_for('add_event') }}">Add Event</a>
+    <a href="{{ url_for('add_event') }}" class="btn btn-primary">Add Event</a>
 </div>
 {% endblock %}
