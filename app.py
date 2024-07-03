@@ -108,19 +108,23 @@ def get_events():
     return jsonify({'data': events_list})
 
 
-@app.route('/add_event', methods=["GET", "POST"])
+@app.route("/events", methods=["POST"])
 def add_event():
     if request.method == "POST":
+        event_name = request.form.get("event_name")
+        event_start_date = request.form.get("event_start_date")
+        event_end_date = request.form.get("event_end_date")
+
+        if not event_name or not event_start_date or not event_end_date:
+            return jsonify({'status': False, 'msg': 'Please enter all required details.'})
+
         event = {
-            "event_name": request.form.get("event_name"),
-            "event_description": request.form.get("event_description"),
-            "due_date": request.form.get("due_date"),
+            'event_name': event_name,
+            'event_start_date': event_start_date,
+            'event_end_date': event_end_date
         }
         mongo.db.events.insert_one(event)
-        flash("Event Successfully Added")
-        return redirect(url_for("calendar"))
-    
-    return render_template('add_event.html')
+        return jsonify({'status': True, 'msg': 'Event added successfully!'})
 
 
 if __name__ == "__main__":
