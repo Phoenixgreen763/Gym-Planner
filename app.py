@@ -94,18 +94,12 @@ def calendar():
     return render_template("calendar.html")
 
 
-@app.route("/events", methods=["GET"])
+@app.route('/events', methods=["GET"])
 def get_events():
-    events = mongo.db.events.find()
-    events_list = []
+    events = list(mongo.db.events.find())
     for event in events:
-        events_list.append({
-            'event_id': str(event['_id']),
-            'title': event['event_name'],
-            'start': event['event_start_date'],
-            'end': event['event_end_date']
-        })
-    return jsonify({'data': events_list})
+        event["_id"] = str(event["_id"])  # Convert ObjectId to string for JSON serialization
+    return jsonify(events)
 
 
 @app.route("/events", methods=["POST"])
