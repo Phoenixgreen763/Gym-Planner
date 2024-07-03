@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 <!-- specific page content here -->
-<section class="club-moto">
+ {% if session.user %}
+<section class="club-intro">
+    <div class="heading">
+        <h2>Welcome back !</h2>
+        <hr>
+        <p>
+            Head over to your profile to view your progress, or visit your planner to schedule your next session.
+            <br>
+            There are also events on the calendar for club members to attend if you are interested.
+        </p>
+    </div>
+</section>
+{% else %}
+<section class="club-intro">
     <div class="heading">
         <h2>Welcome to Gym Planner !</h2>
         <hr>
@@ -14,6 +27,7 @@
         </p>
     </div>
 </section>
+{% endif %}
 <section class="club-ethos">
     <div>
 
