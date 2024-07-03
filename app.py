@@ -89,6 +89,21 @@ def calendar():
     return render_template("calendar.html")
 
 
+@app.route('/add_event', methods=["GET", "POST"])
+def add_event():
+    if request.method == "POST":
+        event = {
+            "event_name": request.form.get("event_name"),
+            "event_description": request.form.get("event_description"),
+            "due_date": request.form.get("due_date"),
+        }
+        mongo.db.events.insert_one(event)
+        flash("Event Successfully Added")
+        return redirect(url_for("calendar"))
+    
+    return render_template('add_event.html')
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

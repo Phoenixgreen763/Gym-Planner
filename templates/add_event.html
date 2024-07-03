@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <h3 class="text-primary text-center">Add Event</h3>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('add_event') }}">
+                    <!-- event name -->
+                    <div class="form-group">
+                        <label for="event_name">Event Name</label>
+                        <input id="event_name" name="event_name" minlength="5" maxlength="50"
+                               type="text" class="form-control" required>
+                    </div>
+
+                    <!-- event description -->
+                    <div class="form-group">
+                        <label for="event_description">Event Description</label>
+                        <textarea id="event_description" name="event_description" minlength="5"
+                                  maxlength="200" class="form-control" required></textarea>
+                    </div>
+
+                    <!-- date picker -->
+                    <div class="form-group">
+                        <label for="due_date">Start Date</label>
+                        <input id="due_date" name="due_date" type="text" class="form-control datepicker" required>
+                    </div>
+
+                    <!-- submit button -->
+                    <button type="submit" class="btn btn-primary">Add Event <i class="fas fa-plus-square"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
