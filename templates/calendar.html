@@ -83,6 +83,40 @@
                 alert('Failed to load events.');
             }
         });
-    }   
+    }
+
+    function save_event() {
+        var event_name = $("#event_name").val();
+        var event_start_date = $("#event_start_date").val();
+        var event_end_date = $("#event_end_date").val();
+        if (event_name == "" || event_start_date == "" || event_end_date == "") {
+            alert("Please enter all required details.");
+            return false;
+        }
+        $.ajax({
+            url: "/events",
+            type: "POST",
+            dataType: 'json',
+            data: {
+                event_name: event_name,
+                event_start_date: event_start_date,
+                event_end_date: event_end_date
+            },
+            success: function (response) {
+                $('#event_entry_modal').modal('hide');
+                if (response.status == true) {
+                    alert(response.msg);
+                    location.reload();
+                } else {
+                    alert(response.msg);
+                }
+            },
+            error: function (xhr, status) {
+                console.log('ajax error = ' + xhr.statusText);
+                alert('Failed to save event.');
+            }
+        });
+        return false;
+    }
 </script>
 {% endblock %}
