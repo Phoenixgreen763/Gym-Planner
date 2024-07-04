@@ -55,7 +55,6 @@
                         id: event._id,
                         title: event.event_name,
                         start: event.event_start_date,
-                        end: event.event_end_date
                     };
                 });
                 successCallback(events);
@@ -70,8 +69,7 @@
     function save_event() {
         var event_name = $("#event_name").val();
         var event_start_date = $("#event_start_date").val();
-        var event_end_date = $("#event_end_date").val();
-        if (event_name === "" || event_start_date === "" || event_end_date === "") {
+        if (event_name === "" || event_start_date === "") {
             alert("Please enter all required details.");
             return false;
         }
@@ -81,7 +79,6 @@
             data: {
                 event_name: event_name,
                 event_start_date: event_start_date,
-                event_end_date: event_end_date
             },
             success: function(response) {
                 $('#event_entry_modal').modal('hide');

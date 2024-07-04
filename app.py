@@ -107,16 +107,14 @@ def add_event():
     if request.method == "POST":
         event_name = request.form.get("event_name")
         event_start_date = request.form.get("event_start_date")
-        event_end_date = request.form.get("event_end_date")
-
-        if not event_name or not event_start_date or not event_end_date:
+        if not event_name or not event_start_date:
             return jsonify({'status': False, 'msg': 'Please enter all required details.'})
-
+        
         event = {
             'event_name': event_name,
-            'event_start_date': event_start_date,
-            'event_end_date': event_end_date
+            'event_start_date': event_start_date
         }
+        
         mongo.db.events.insert_one(event)
         return jsonify({'status': True, 'msg': 'Event added successfully!'})
 
