@@ -86,14 +86,16 @@ def logout():
 
 @app.route("/profile", methods=["GET", "POST"])
 def profile():
+    username = session.get("user")
 
-    return render_template("profile.html")
+    return render_template("profile.html", username=username)
 
 
 @app.route("/planner", methods=["GET", "POST"])
 def planner():
+    username = session.get("user")
 
-    return render_template("planner.html")
+    return render_template("planner.html", username=username)
 
 
 @app.route("/calendar")
