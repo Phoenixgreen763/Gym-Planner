@@ -88,6 +88,18 @@ def logout():
     return redirect(url_for("login"))
 
 
+@app.route("/profile", methods=["GET", "POST"])
+def profile():
+
+    return render_template("profile.html")
+
+
+@app.route("/planner", methods=["GET", "POST"])
+def planner():
+
+    return render_template("planner.html")
+
+
 @app.route("/calendar")
 def calendar():
 
