@@ -131,6 +131,24 @@ def add_exercise():
     return render_template("add_exercise.html", categories=categories, days=days)
 
 
+@app.route("/edit_exercise/<exercise_id>", methods=["GET", "POST"])
+def edit_exercise(exercise_id):
+    if request.method == "POST":
+        submit = {
+            "day_name": request.form.get("day_name"),
+            "category_name": request.form.get("category_name"),
+            "exercise_name": request.form.get("exercise_name"),
+            "exercise_description": request.form.get("exercise_description"),
+            "created_by": session["user"]
+        }
+        mongo.db.exercise.update_one(
+            {"_id": ObjectId(exercise_id)},
+            {"$set": submit}
+        )
+        flash("Exercise Updated")
+        return redirect(url_for("planner"))
+
+
 @app.route("/delete_exercise/<exercise_id>")
 def delete_exercise(exercise_id):
     mongo.db.exercises.delete_one({"_id": ObjectId(exercise_id)})
