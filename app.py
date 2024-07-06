@@ -4,6 +4,7 @@ from flask import (
     redirect, jsonify, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
+from bson import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
@@ -128,6 +129,13 @@ def add_exercise():
     days = mongo.db.days.find().sort("day_name", 1)
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_exercise.html", categories=categories, days=days)
+
+
+@app.route("/delete_exercise/<exercise_id>")
+def delete_exercise(exercise_id):
+    mongo.db.exercises.delete_one({"_id": ObjectId(exercise_id)})
+    flash("Exercise Deleted")
+    return redirect(url_for("planner"))
 
 
 @app.route("/calendar")
