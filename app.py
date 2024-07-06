@@ -98,6 +98,33 @@ def planner():
     return render_template("planner.html", username=username)
 
 
+@app.route("/")
+@app.route("/get_exercises")
+def get_exercises():
+    if "user" in session:
+        exercises = list(mongo.db.tasks.find({"created_by": session["user"]}))
+        return render_template("planner.html", exercises=exercises)
+
+
+@app.route("/add_exercise", methods=["GET", "POST"])
+def add_exercise():
+    if request.method == "POST":
+        exercise = {
+            "day_name": request.form.get("day_name"),
+            "category_name": request.form.get("category_name"),
+            "exercise_name": request.form.get("exercise_name"),
+            "exercise_description": request.form.get("exercise_description"),
+            "created_by": session["user"]
+        }
+        mongo.db.exercises.insert_one(exercise)
+        flash("Exercise Successfully Added")
+        return redirect(url_for("planner"))
+
+    days = mongo.db.days.find().sort("day_name", 1)
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_exercise.html", categories=categories, days=days)
+
+
 @app.route("/calendar")
 def calendar():
 
