@@ -28,9 +28,8 @@ header .navbar {
 
 #planner {
     text-align: center;
+    margin-bottom: 5%;
 }
-
-
 
 .add_event .btn {
     font-size: 200%;
