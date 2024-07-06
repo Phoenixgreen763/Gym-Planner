@@ -93,9 +93,14 @@ def profile():
 
 @app.route("/planner", methods=["GET", "POST"])
 def planner():
-    username = session.get("user")
-
-    return render_template("planner.html", username=username)
+    if "user" in session:
+        username = session["user"]
+        exercises = list(mongo.db.exercises.find({"created_by": username}))
+        days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+        categories = mongo.db.categories.find().sort("category_name", 1)
+        return render_template("planner.html", username=username, exercises=exercises, days=days, categories=categories)
+    else:
+        return redirect(url_for("login"))
 
 
 @app.route("/")
