@@ -118,10 +118,9 @@
                 success: function (response) {
                     $('#exercise_entry_modal').modal('hide');
                     if (response.status) {
-                        alert(response.msg);
                         location.reload();
                     } else {
-                        alert(response.msg);
+                        
                     }
                 },
                 error: function (xhr, status, error) {
