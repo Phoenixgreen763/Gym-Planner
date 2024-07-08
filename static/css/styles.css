@@ -1,6 +1,15 @@
 @import url('https://fonts.googleapis.com/css?family=Merienda&effect=outline');
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body {
+    height: 100vh;
+    /* Ensure body takes up full viewport height */
+}
 
 header .navbar {
     background-color: lightblue;
@@ -44,4 +53,82 @@ header .navbar {
 
 .add_event .btn {
     font-size: 200%;
+}
+
+/* Footer Styles */
+
+footer {
+    background-color: rgb(39, 151, 255);
+    margin-top: 2.5%;
+}
+
+footer .footer-bottom {
+    width: 100%;
+    background-color: rgb(39, 151, 255);
+}
+
+footer .social-links {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
+footer .social-links .fa-solid.fa-circle.fa-stack-1x::before {
+    border-radius: 50%;
+}
+
+footer .social-links .social-link {
+    text-align: center;
+}
+
+#footer-2 {
+    background-color: rgb(39, 151, 255);
+    margin-top: 0;
+}
+
+#footer-2 .footer-bottom {
+    width: 100%;
+    background-color: rgb(39, 151, 255);
+}
+
+#footer-2 .social-links {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
+#footer-2 .social-links .fa-solid.fa-circle.fa-stack-1x::before {
+    border-radius: 50%;
+}
+
+#footer-2 .social-links .social-link {
+    text-align: center;
+}
+
+/* Social Links Styles */
+
+.social-links {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
+.social-links .fa-solid.fa-circle.fa-stack-1x::before {
+    border-radius: 50%;
+}
+
+.fa-heartbeat,
+.fa-fly,
+.fa-globe,
+.fa-dumbbell {
+    color: black;
+}
+
+/* copyright Styles */
+.copyright {
+    text-decoration: none;
+    font-size: 15px;
+    color: white;
+    text-align: center;
+    background-color: rgb(39, 151, 255);
 }
