@@ -18,6 +18,17 @@ header .navbar {
     font-size: 200%; 
 }
 
+.navbar-toggler-icon {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: middle;
+    content: "";
+    background: repeat;
+    background-color: black;
+    background-size: 100% 100%;
+}
+
 .heading {
     text-align: center;
 }
