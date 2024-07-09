@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <!-- specific page content here -->
- {% if session.user %}
+{% if session.user %}
 <section class="club-intro">
     <div class="heading">
         <h2>Welcome {{ username }} !</h2>
@@ -28,27 +28,5 @@
     </div>
 </section>
 {% endif %}
-<section class="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <img src="/static/images/heavy-rope.jpg" alt="Description of image 1">
-        </div>
-        <div class="gallery-item">
-            <img src="/static/images/treadmill.jpg" alt="Description of image 2">
-        </div>
-        <div class="gallery-item">
-            <img src="/static/images/kettlebells.jpg" alt="Description of image 3">
-        </div>
-        <div class="gallery-item">
-            <img src="/static/images/barbell.jpg" alt="Description of image 4">
-        </div>
-        <div class="gallery-item">
-            <img src="/static/images/yoga.jpg" alt="Description of image 4">
-        </div>
-        <div class="gallery-item">
-            <img src="/static/images/skipping.jpg" alt="Description of image 4">
-        </div>
-    </div>
-</section>
+
 {% endblock %}
