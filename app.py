@@ -85,10 +85,12 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/exercises")
-def exercises():
+@app.route("/exercise_list")
+def exercise_list():
+    exercise_list = list(mongo.db.exercise_list.find())
     
-    return render_template("exercises.html")
+    categories = mongo.db.categories.find().sort("category_name")
+    return render_template("exercise_list.html", exercise_list=exercise_list, categories=categories)
 
 
 @app.route("/get_exercise_list")
@@ -96,6 +98,23 @@ def get_exercise_list():
     if "user" in session:
         exercise_list = list(mongo.db.exercise_list.find())
         return render_template("planner.html", exercise_list=exercise_list)
+
+
+@app.route("/add_exercise_list", methods=["GET", "POST"])
+def add_exercise_list():
+    if request.method == "POST":
+        exercise_list = {
+            "category_name": request.form.get("category_name"),
+            "exercise_name": request.form.get("exercise_name"),
+            "exercise_description": request.form.get("exercise_description"),
+            "created_by": session["user"]
+        }
+        mongo.db.exercise_list.insert_one(exercise_list)
+        flash("Exercise Added")
+        return redirect(url_for("exercise_list"))
+
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_exercise.html", categories=categories)
 
 
 @app.route("/planner", methods=["GET", "POST"])
