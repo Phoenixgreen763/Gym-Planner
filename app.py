@@ -85,11 +85,10 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/profile", methods=["GET", "POST"])
-def profile():
-    username = session.get("user")
-
-    return render_template("profile.html", username=username)
+@app.route("/exercises")
+def exercises():
+    
+    return render_template("exercises.html")
 
 
 @app.route("/planner", methods=["GET", "POST"])
@@ -104,7 +103,6 @@ def planner():
         return redirect(url_for("login"))
 
 
-@app.route("/")
 @app.route("/get_exercises")
 def get_exercises():
     if "user" in session:

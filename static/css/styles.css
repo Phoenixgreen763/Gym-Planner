@@ -20,11 +20,11 @@ header .navbar {
 }
 
 .navbar .navbar-brand {
-    font-size: 400%; 
+    font-size: 200%; 
 }
 
 .navbar-nav .nav-link {
-    font-size: 200%; 
+    font-size: 150%; 
 }
 
 .navbar-toggler-icon {
