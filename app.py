@@ -91,6 +91,13 @@ def exercises():
     return render_template("exercises.html")
 
 
+@app.route("/get_exercise_list")
+def get_exercise_list():
+    if "user" in session:
+        exercise_list = list(mongo.db.exercise_list.find())
+        return render_template("planner.html", exercise_list=exercise_list)
+
+
 @app.route("/planner", methods=["GET", "POST"])
 def planner():
     if "user" in session:
@@ -106,7 +113,7 @@ def planner():
 @app.route("/get_exercises")
 def get_exercises():
     if "user" in session:
-        exercises = list(mongo.db.tasks.find({"created_by": session["user"]}))
+        exercises = list(mongo.db.exercises.find({"created_by": session["user"]}))
         return render_template("planner.html", exercises=exercises)
 
 
