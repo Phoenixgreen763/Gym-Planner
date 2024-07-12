@@ -117,6 +117,27 @@ def add_exercise_list():
     return render_template("add_exercise.html", categories=categories)
 
 
+@app.route("/edit_exercise_list/<exercise_id>", methods=["GET", "POST"])
+def edit_exercise_list(exercise_id):
+    if request.method == "POST":
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "exercise_name": request.form.get("exercise_name"),
+            "exercise_description": request.form.get("exercise_description"),
+            "created_by": session["user"]
+        }
+        mongo.db.exercise_list.update_one(
+            {"_id": ObjectId(exercise_id)},
+            {"$set": submit}        
+        )
+        flash("Exercise Updated")
+        return redirect(url_for("exercise_list"))
+
+    exercise = mongo.db.exercise_list.find_one({"_id": ObjectId(exercise_id)})
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("edit_exercise_list.html", exercise=exercise, categories=categories)
+
+
 @app.route("/delete_exercise_list/<exercise_id>")
 def delete_exercise_list(exercise_id):
     mongo.db.exercise_list.delete_one({"_id": ObjectId(exercise_id)})
