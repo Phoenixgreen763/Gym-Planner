@@ -117,6 +117,13 @@ def add_exercise_list():
     return render_template("add_exercise.html", categories=categories)
 
 
+@app.route("/delete_exercise_list/<exercise_id>")
+def delete_exercise_list(exercise_id):
+    mongo.db.exercise_list.delete_one({"_id": ObjectId(exercise_id)})
+    flash("Exercise Deleted")
+    return redirect(url_for("exercise_list"))
+
+
 @app.route("/planner", methods=["GET", "POST"])
 def planner():
     if "user" in session:
