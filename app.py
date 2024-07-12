@@ -135,7 +135,7 @@ def edit_exercise_list(exercise_id):
 
     exercise = mongo.db.exercise_list.find_one({"_id": ObjectId(exercise_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
-    return render_template("edit_exercise_list.html", exercise=exercise, categories=categories)
+    return render_template("edit_exercise.html", exercise=exercise, categories=categories)
 
 
 @app.route("/delete_exercise_list/<exercise_id>")
