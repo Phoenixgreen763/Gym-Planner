@@ -97,7 +97,7 @@ def exercise_list():
 def get_exercise_list():
     if "user" in session:
         exercises = list(mongo.db.exercise_list.find())
-        return render_template("exercise_list.html", exercises=exercises)
+        return render_template("exercise_list.html", exercises=exercises,  enumerate=enumerate)
 
 
 @app.route("/add_exercise_list", methods=["GET", "POST"])
