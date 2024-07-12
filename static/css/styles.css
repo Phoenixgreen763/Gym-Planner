@@ -51,10 +51,6 @@ header .navbar {
     margin-bottom: 5%;
 }
 
-.add_event .btn {
-    font-size: 200%;
-}
-
 /* Custom styles to override Bootstrap accordion button styles */
 .accordion-button:not(.collapsed) {
     background-color: #fff !important; /* Change background color */
