@@ -18,8 +18,8 @@
                 {{ day }}
             </button>
         </h2>
-        <div id="collapse{{ day }}" class="accordion-collapse collapse"
-            aria-labelledby="heading{{ day }}" data-bs-parent="#accordionExample">
+        <div id="collapse{{ day }}" class="accordion-collapse collapse" aria-labelledby="heading{{ day }}"
+            data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 {% for exercise in exercises %}
                 {% if exercise.day_name|capitalize == day %}
@@ -31,12 +31,9 @@
                                 <p>{{ exercise.exercise_description }}</p>
                             </div>
                             <div class="col-md-3 text-end">
-                                <a href="#" class="btn-small green accent-4 edit-exercise"
-                                    data-bs-toggle="modal" 
-                                    data-bs-target="#exercise_edit_modal"
-                                    data-id="{{ exercise._id }}"
-                                    data-day="{{ exercise.day_name }}"
-                                    data-category="{{ exercise.category_name }}"
+                                <a href="#" class="btn-small green accent-4 edit-exercise" data-bs-toggle="modal"
+                                    data-bs-target="#exercise_edit_modal" data-id="{{ exercise._id }}"
+                                    data-day="{{ exercise.day_name }}" data-category="{{ exercise.category_name }}"
                                     data-name="{{ exercise.exercise_name }}"
                                     data-description="{{ exercise.exercise_description }}">Edit</a>
                                 <a href="{{ url_for('delete_exercise', exercise_id=exercise._id) }}"
@@ -96,49 +93,6 @@
     </div>
 </div>
 
-<div class="modal fade" id="exercise_edit_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Edit Exercise</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="exercise_edit_form">
-                    <input type="hidden" id="edit_exercise_id" name="exercise_id">
-                    <div class="form-group mb-3">
-                        <label for="edit_day_name">Day</label>
-                        <select id="edit_day_name" name="day_name" class="form-select" required>
-                            {% for day in days %}
-                            <option value="{{ day }}">{{ day }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="edit_category_name">Category</label>
-                        <select id="edit_category_name" name="category_name" class="form-select" required>
-                            {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="edit_exercise_name">Exercise Name</label>
-                        <input type="text" id="edit_exercise_name" name="exercise_name" class="form-control" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="edit_exercise_description">Exercise Description</label>
-                        <textarea id="edit_exercise_description" name="exercise_description" class="form-control" rows="3"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save Changes</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         // Add Exercise Form Submission
@@ -171,63 +125,6 @@
                         location.reload();
                     } else {
                         alert("Failed to add exercise.");
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error saving exercise:', error);
-                    alert('Failed to save exercise');
-                }
-            });
-        });
-
-        // Edit Exercise Button Click
-        $('.edit-exercise').on('click', function () {
-            var exerciseId = $(this).data('id');
-            var day = $(this).data('day');
-            var category = $(this).data('category');
-            var name = $(this).data('name');
-            var description = $(this).data('description');
-
-            $('#edit_exercise_id').val(exerciseId);
-            $('#edit_day_name').val(day);
-            $('#edit_category_name').val(category);
-            $('#edit_exercise_name').val(name);
-            $('#edit_exercise_description').val(description);
-
-            $('#exercise_edit_modal').modal('show');
-        });
-
-        // Edit Exercise Form Submission
-        document.getElementById('exercise_edit_form').addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            var form = event.target;
-            var exercise_id = form.exercise_id.value;
-            var day_name = form.day_name.value;
-            var category_name = form.category_name.value;
-            var exercise_name = form.exercise_name.value;
-            var exercise_description = form.exercise_description.value;
-
-            if (day_name === "" || category_name === "" || exercise_name === "" || exercise_description === "") {
-                alert("Please enter all required details.");
-                return false;
-            }
-
-            $.ajax({
-                url: "/edit_exercise/" + exercise_id,
-                method: "POST",
-                data: {
-                    day_name: day_name,
-                    category_name: category_name,
-                    exercise_name: exercise_name,
-                    exercise_description: exercise_description,
-                },
-                success: function (response) {
-                    $('#exercise_edit_modal').modal('hide');
-                    if (response.status) {
-                        location.reload();
-                    } else {
-                        alert("Failed to edit exercise.");
                     }
                 },
                 error: function (xhr, status, error) {
