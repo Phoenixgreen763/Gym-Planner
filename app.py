@@ -90,7 +90,7 @@ def exercise_list():
     exercises = list(mongo.db.exercise_list.find())
     
     categories = mongo.db.exercise_list.find().sort("category_name")
-    return render_template("exercise_list.html", exercises=exercises, categories=categories)
+    return render_template("exercise_list.html", exercises=exercises, categories=categories, enumerate=enumerate)
 
 
 @app.route("/get_exercise_list")

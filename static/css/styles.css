@@ -55,6 +55,18 @@ header .navbar {
     font-size: 200%;
 }
 
+/* Custom styles to override Bootstrap accordion button styles */
+.accordion-button:not(.collapsed) {
+    background-color: #fff !important; /* Change background color */
+    color: #000 !important;            /* Change text color */
+    border-color: #ccc !important;     /* Change border color */
+}
+
+.accordion-button:not(.collapsed)::after {
+    filter: invert(0%) !important; /* Change icon color to black */
+}
+
+
 /* Footer Styles */
 
 footer {
