@@ -1,5 +1,20 @@
 {% extends "base.html" %}
 {% block content %}
 
+<form>
+    <div class="mb-3">
+        <label for="category" class="form-label"> Exercise Category</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exercise_name" class="form-label">Exercise Name</label>
+        <input type="text" class="form-control" id="exercise_name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exercise_description" class="form-label">Exercise Description</label>
+        <input type="text" class="form-control" id="exercise_description">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 {% endblock %}
