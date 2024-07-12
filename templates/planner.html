@@ -18,7 +18,7 @@
                 {{ day }}
             </button>
         </h2>
-        <div id="collapse{{ day }}" class="accordion-collapse collapse {% if loop.first %}show{% endif %}"
+        <div id="collapse{{ day }}" class="accordion-collapse collapse"
             aria-labelledby="heading{{ day }}" data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 {% for exercise in exercises %}

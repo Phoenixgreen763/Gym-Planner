@@ -87,17 +87,17 @@ def logout():
 
 @app.route("/exercise_list")
 def exercise_list():
-    exercise_list = list(mongo.db.exercise_list.find())
+    exercises = list(mongo.db.exercise_list.find())
     
-    categories = mongo.db.categories.find().sort("category_name")
-    return render_template("exercise_list.html", exercise_list=exercise_list, categories=categories)
+    categories = mongo.db.exercise_list.find().sort("category_name")
+    return render_template("exercise_list.html", exercises=exercises, categories=categories)
 
 
 @app.route("/get_exercise_list")
 def get_exercise_list():
     if "user" in session:
-        exercise_list = list(mongo.db.exercise_list.find())
-        return render_template("planner.html", exercise_list=exercise_list)
+        exercises = list(mongo.db.exercise_list.find())
+        return render_template("exercise_list.html", exercises=exercises)
 
 
 @app.route("/add_exercise_list", methods=["GET", "POST"])
