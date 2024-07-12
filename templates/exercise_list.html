@@ -11,15 +11,21 @@
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="heading{{ index }}">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ index }}"
-                        aria-expanded="true" aria-controls="collapse{{ index }}">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapse{{ index }}" aria-expanded="true" aria-controls="collapse{{ index }}">
                         <strong>{{ exercise.exercise_name }}</strong>
                     </button>
                 </h2>
-                <div id="collapse{{ index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ index }}" data-bs-parent="#accordionExample">
+                <div id="collapse{{ index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ index }}"
+                    data-bs-parent="#accordionExample">
                     <div class="accordion-body">
                         <strong>{{ exercise.category_name }}</strong>
                         <p>{{ exercise.exercise_description }}</p>
+                        <p>Submitted by: {{ exercise.created_by }}</p>
+                        {% if session.user|lower == exercise.created_by|lower %}
+                        <a href="" class="btn-small">Edit</a>
+                        <a href="" class="btn-small">Delete</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+    <form method="POST" action="{{ url_for('add_exercise_list') }}">
+        <div class="mb-3">
+            <label for="category_name" class="form-label">Exercise Category</label>
+            <select class="form-select" aria-label="Default select example" id="category_name" name="category_name">
+                <option value="" disabled selected>Choose Category</option>
+                {% for category in categories %}
+                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exercise_name" class="form-label">Exercise Name</label>
+            <input type="text" class="form-control" id="exercise_name" name="exercise_name" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exercise_description" class="form-label">Exercise Description</label>
+            <input type="text" class="form-control" id="exercise_description" name="exercise_description">
+        </div>
+        <a href="{{ url_for('get_exercise_list') }}" class="btn-large red text-shadow">
+            Cancel <i class="fas fa-times-circle right"></i>
+        </a>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+
+{% endblock %}
