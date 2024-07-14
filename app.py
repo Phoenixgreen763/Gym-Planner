@@ -26,6 +26,13 @@ def home():
         return render_template("home.html", username=username)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    exercises = list(mongo.db.exercise_list.find({"$text": {"$search": query}}))
+    return render_template("exercise_list.html", exercises=exercises, enumerate=enumerate)
+
+
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
