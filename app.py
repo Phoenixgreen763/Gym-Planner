@@ -103,6 +103,14 @@ def get_exercise_list():
 @app.route("/add_exercise_list", methods=["GET", "POST"])
 def add_exercise_list():
     if request.method == "POST":
+        # check if username already exists in db
+        existing_exercise = mongo.db.exercise_list.find_one(
+            {"exercise_name": request.form.get("exercise_name").lower()})
+        
+        if existing_exercise:
+            flash("Exercise already exists")
+            return redirect(url_for("add_exercise_list"))
+        
         exercise_list = {
             "category_name": request.form.get("category_name"),
             "exercise_name": request.form.get("exercise_name"),
