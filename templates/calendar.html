@@ -1,9 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
+{% if session.get("is_admin") %}
 <div class="add_event mt-3 mb-3">
     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#event_entry_modal">Add Event</button></a>
 </div>
+{% endif %}
 <div id="calendar"></div>
+
 
 <!-- Start popup dialog box -->
 <div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"

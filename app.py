@@ -37,13 +37,13 @@ def search():
 def login():
     if request.method == "POST":
         # check if username exists in db
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+        existing_user = mongo.db.users.find_one({"username": request.form.get("username").lower()})
 
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
+                session["is_admin"] = existing_user.get("admin", False)  # Store admin status in session
                 flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("home"))  # Redirect to 'home' after successful login
             else:
@@ -88,7 +88,8 @@ def register():
 def logout():
     # remove user from session cookie
     flash("You have been logged out")
-    session.pop("user")
+    session.pop("user", None)
+    session.pop("is_admin", None)
     return redirect(url_for("login"))
 
 
