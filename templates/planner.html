@@ -124,13 +124,9 @@
                     if (response.status) {
                         location.reload();
                     } else {
-                        alert("Failed to add exercise.");
+                        
                     }
                 },
-                error: function (xhr, status, error) {
-                    console.error('Error saving exercise:', error);
-                    alert('Failed to save exercise');
-                }
             });
         });
     });

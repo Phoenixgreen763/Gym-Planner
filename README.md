@@ -39,7 +39,25 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * This form is identical in styling to the register form, except the form button logs the user in, using the pre-exisitng data they created prior.
     * Similar to the register page, underneath the form is a link, this link instead redirects the user to the register page if they do not already have an account.
   
-* 
+* Exercises page
+    * This page allows users to add, edit, delete, search for and view exercises added by other users.
+    * The search bar includes a search, and reset button. This allows users to search for exercises by muscle group, or exercise name. The reset button allows the user to refresh the list and show the full range of exercises.
+    * This page has an add exercise button for users. This lets all users add an exercise to the list. 
+    * Users can also see who the exercise was submitted by.
+    * This includes exercise-category, exercise-name, and a description of the exercise.
+    * If a user attempts to submit an exercise that is already in the list, they will be given a flash message to indicate that the exercise already exists within the current list.
+    * If a user is viewing an exercise they submitted, they will have the option to delete the exercise from the list, or edit the exercise.
+    * If the user wishes to edit their own exercise, they will be redirected to a form.
+    * This will be preopulated with the exisitng information that the user previously submitted.
+    * The user will have the option to cancel the edit, or submit the edit. If they choose to edit, it will update the information that is displayed on the exercise list.
+
+* Planner page
+    * This page allows the users to create a weekly plan for their training.
+    * Only exercises submitted by the user will be displayed to themselves.
+    * Users can add exercises in the same format as the exercise list, with the additional ability to select which day of the week the exercise needs to be added to.
+    * Instead of the forms that the exercise list uses, the planner instead utilises a popup modal instead.
+    * When a user submits the information in the modal form, it will be added to their planner, inside the specific day they selected.
+    * The user also has the ability to delete exercises that they no longer want in thei planner.
 
 ## Design
 
