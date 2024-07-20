@@ -44,7 +44,6 @@ def login():
             if check_password_hash(existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 session["is_admin"] = existing_user.get("admin", False)  # Store admin status in session
-                flash("Welcome, {}".format(request.form.get("username")))
                 return redirect(url_for("home"))  # Redirect to 'home' after successful login
             else:
                 # invalid password match
