@@ -31,11 +31,6 @@
                                 <p>{{ exercise.exercise_description }}</p>
                             </div>
                             <div class="col-md-3 text-end">
-                                <a href="#" class="btn-small green accent-4 edit-exercise" data-bs-toggle="modal"
-                                    data-bs-target="#exercise_edit_modal" data-id="{{ exercise._id }}"
-                                    data-day="{{ exercise.day_name }}" data-category="{{ exercise.category_name }}"
-                                    data-name="{{ exercise.exercise_name }}"
-                                    data-description="{{ exercise.exercise_description }}">Edit</a>
                                 <a href="{{ url_for('delete_exercise', exercise_id=exercise._id) }}"
                                     class="btn-small red accent-4">Delete</a>
                             </div>

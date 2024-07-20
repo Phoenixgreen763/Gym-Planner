@@ -58,6 +58,20 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * Instead of the forms that the exercise list uses, the planner instead utilises a popup modal instead.
     * When a user submits the information in the modal form, it will be added to their planner, inside the specific day they selected.
     * The user also has the ability to delete exercises that they no longer want in thei planner.
+    * When a user deletes an exercise from the planner, a flash message is shown to  the user, to indicate this was successful.
+
+* Calendar page
+    * 
+  
+### Features to Implement
+
+## User Stories
+
+## Testing
+
+## Validator Testing 
+
+## All Known Bugs
 
 ## Design
 
