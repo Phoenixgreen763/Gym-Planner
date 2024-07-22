@@ -146,6 +146,11 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
 * All users had no issue creating an account, or logging in.
 * Manual testing however, did show that when exercises on the list page were edited, a new exercise would be added instead and would not remove the old information. This has now been fixed, so the information stored in the database is changed, and a new form is not added instead.
 
+## Code testing
+
+* Some debugging was used throughout the javascript and app.py files.
+* This was necessary to ensure that some specific issues were caught, and allowed for the ability to fix the issues when found.
+
 ## Validator Testing 
 
 * CSS Validator 
@@ -153,6 +158,10 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * ![CSS results image](/static/images/CSS.png)
 
 * HTML Validator
+    * Warnings are shown for the section at the top of the pages, this is due to it being empty for the use of flash messages.
+    * ![Section warning](/static/images/section-warning.png)
+    * The rest of the pages show no errors, besides "duplicate ids" for the accordion loop.
+    * ![HTML results image](/static/images/validator.png)
 
 * Light House Testing
     * Lighthouse was used to check for errors or optimisation issues
