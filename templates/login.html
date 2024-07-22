@@ -1,51 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- specific page content here -->
-<h3 class="text-center">Log In</h3>
+    <!-- specific page content here -->
+    <h3 class="text-center">Log In</h3>
 
-<div class="row">
-    <form class="col-sm-12 col-md-8 offset-md-2" method="POST" action="{{ url_for('login') }}">
-        <div class="card">
-            <div class="card-body">
-                <!-- username -->
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user-cog"></i></span>
+    <div class="row">
+        <form class="col-sm-12 col-md-8 offset-md-2" method="POST" action="{{ url_for('login') }}">
+            <div class="card">
+                <div class="card-body">
+                    <!-- username -->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user-cog"></i></span>
+                            </div>
+                            <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                                pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                         </div>
-                        <input id="username" name="username" type="text" minlength="5" maxlength="15"
-                            pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                     </div>
-                </div>
-                <!-- password -->
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user-lock"></i></span>
+                    <!-- password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user-lock"></i></span>
+                            </div>
+                            <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                                pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                         </div>
-                        <input id="password" name="password" type="password" minlength="5" maxlength="15"
-                            pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                     </div>
-                </div>
-                <!-- login button -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Log In <i class="fas fa-sign-in-alt"></i>
-                    </button>
+                    <!-- login button -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Log In <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-        <p class="text-center">
-            New here? 
-            <a href="{{ url_for('register') }}" class="text-info">Register Account</a>
-        </p>
+        </form>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="text-center">
+                New here? 
+                <a href="{{ url_for('register') }}" class="text-info">Register Account</a>
+            </p>
+        </div>
+    </div>
 {% endblock %}

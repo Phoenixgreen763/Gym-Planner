@@ -1,32 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- specific page content here -->
-{% if session.user %}
-<section class="club-intro">
-    <div class="heading">
-        <h2>Welcome {{ username }} !</h2>
-        <hr>
-        <p>
-            Head over to your profile to view your progress, or visit your planner to schedule your next session.
-            <br>
-            There are also events on the calendar for club members to attend if you are interested.
-        </p>
-    </div>
-</section>
-{% else %}
-<section class="club-intro">
-    <div class="heading">
-        <h2>Welcome to Gym Planner !</h2>
-        <hr>
-        <p>
-            Using our app you can do a multitude of things to ensure your journey in the gym is effortless and rewarding
-            !
-            <br>
-            If you are new, head over to our register page to make a new account, or if you are a returning member
-            simply log in.
-        </p>
-    </div>
-</section>
-{% endif %}
+    <!-- specific page content here -->
+    {% if session.user %}
+    <section class="club-intro">
+        <div class="heading">
+            <h2>Welcome {{ username }} !</h2>
+            <hr>
+            <p>
+                Head over to your profile to view your progress, or visit your planner to schedule your next session.
+                <br>
+                There are also events on the calendar for club members to attend if you are interested.
+            </p>
+        </div>
+    </section>
+    {% else %}
+    <section class="club-intro">
+        <div class="heading">
+            <h2>Welcome to Gym Planner !</h2>
+            <hr>
+            <p>
+                Using our app you can do a multitude of things to ensure your journey in the gym is effortless and rewarding
+                !
+                <br>
+                If you are new, head over to our register page to make a new account, or if you are a returning member
+                simply log in.
+            </p>
+        </div>
+    </section>
+    {% endif %}
 
 {% endblock %}

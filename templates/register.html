@@ -1,51 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- specific page content here -->
-<h3 class="text-center">Register</h3>
+    <!-- specific page content here -->
+    <h3 class="text-center">Register</h3>
 
-<div class="row">
-    <form class="col-sm-8 offset-sm-2" method="POST" action="{{ url_for('register') }}">
-        <div class="card">
-            <div class="card-body">
-                <!-- username -->
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user-plus"></i></span>
+    <div class="row">
+        <form class="col-sm-8 offset-sm-2" method="POST" action="{{ url_for('register') }}">
+            <div class="card">
+                <div class="card-body">
+                    <!-- username -->
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user-plus"></i></span>
+                            </div>
+                            <input id="username" name="username" type="text" minlength="5" maxlength="15"
+                                pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                         </div>
-                        <input id="username" name="username" type="text" minlength="5" maxlength="15"
-                            pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                     </div>
-                </div>
-                <!-- password -->
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user-lock"></i></span>
+                    <!-- password -->
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user-lock"></i></span>
+                            </div>
+                            <input id="password" name="password" type="password" minlength="5" maxlength="15"
+                                pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                         </div>
-                        <input id="password" name="password" type="password" minlength="5" maxlength="15"
-                            pattern="^[a-zA-Z0-9]{5,15}$" class="form-control" required>
                     </div>
-                </div>
-                <!-- register button -->
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Register <i class="fas fa-sign-in-alt"></i>
-                    </button>
+                    <!-- register button -->
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Register <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </form>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
-        <p class="text-center">
-            Already Registered? 
-            <a href="{{ url_for('login') }}" class="text-info">Log In</a>
-        </p>
+        </form>
     </div>
-</div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="text-center">
+                Already Registered? 
+                <a href="{{ url_for('login') }}" class="text-info">Log In</a>
+            </p>
+        </div>
+    </div>
 {% endblock %}

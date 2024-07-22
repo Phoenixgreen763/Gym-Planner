@@ -1,134 +1,134 @@
 {% extends 'base.html' %}
 {% block content %}
-<!-- specific page content here -->
-<h2 class="light-blue-text text-darken-4 center-align" id="planner-header">Workout Planner</h2>
+    <!-- specific page content here -->
+    <h2 class="light-blue-text text-darken-4 center-align" id="planner-header">Workout Planner</h2>
 
-<div class="add_exercise mt-3 mb-3">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exercise_entry_modal">Add Exercise</button>
-</div>
+    <div class="add_exercise mt-3 mb-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exercise_entry_modal">Add Exercise</button>
+    </div>
 
-<div class="accordion" id="accordionExample">
-    {% set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
-    {% for day in days %}
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="heading{{ day }}">
-            <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" type="button"
-                data-bs-toggle="collapse" data-bs-target="#collapse{{ day }}"
-                aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="collapse{{ day }}"
-                style="color: white !important;">
-                {{ day }}
-            </button>
-        </h2>
-        <div id="collapse{{ day }}" class="accordion-collapse collapse" aria-labelledby="heading{{ day }}"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                {% for exercise in exercises %}
-                {% if exercise.day_name|capitalize == day %}
-                <div class="card mb-2 planner-text">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-9">
-                                <strong>{{ exercise.exercise_name }}</strong>
-                                <p>{{ exercise.exercise_description }}</p>
-                            </div>
-                            <div class="col-md-3 text-end">
-                                <a href="{{ url_for('delete_exercise', exercise_id=exercise._id) }}"
-                                    class="btn-small red accent-4">Delete</a>
+    <div class="accordion" id="accordionExample">
+        {% set days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'] %}
+        {% for day in days %}
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading{{ day }}">
+                <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#collapse{{ day }}"
+                    aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="collapse{{ day }}"
+                    style="color: white !important;">
+                    {{ day }}
+                </button>
+            </h2>
+            <div id="collapse{{ day }}" class="accordion-collapse collapse" aria-labelledby="heading{{ day }}"
+                data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    {% for exercise in exercises %}
+                    {% if exercise.day_name|capitalize == day %}
+                    <div class="card mb-2 planner-text">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <strong>{{ exercise.exercise_name }}</strong>
+                                    <p>{{ exercise.exercise_description }}</p>
+                                </div>
+                                <div class="col-md-3 text-end">
+                                    <a href="{{ url_for('delete_exercise', exercise_id=exercise._id) }}"
+                                        class="btn-small red accent-4">Delete</a>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
-                {% endif %}
-                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Modal for Adding and Editing Exercise -->
+    <div class="modal fade" id="exercise_entry_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Add New Exercise</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="exercise_form">
+                        <div class="form-group mb-3">
+                            <label for="day_name">Day</label>
+                            <select id="day_name" name="day_name" class="form-select" required>
+                                {% for day in days %}
+                                <option value="{{ day }}">{{ day }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="category_name">Category</label>
+                            <select id="category_name" name="category_name" class="form-select" required>
+                                {% for category in categories %}
+                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="exercise_name">Exercise Name</label>
+                            <input type="text" id="exercise_name" name="exercise_name" class="form-control" required>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="exercise_description">Exercise Description</label>
+                            <textarea id="exercise_description" name="exercise_description" class="form-control" rows="3"
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Save Exercise</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    {% endfor %}
-</div>
 
-<!-- Modal for Adding and Editing Exercise -->
-<div class="modal fade" id="exercise_entry_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Add New Exercise</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="exercise_form">
-                    <div class="form-group mb-3">
-                        <label for="day_name">Day</label>
-                        <select id="day_name" name="day_name" class="form-select" required>
-                            {% for day in days %}
-                            <option value="{{ day }}">{{ day }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="category_name">Category</label>
-                        <select id="category_name" name="category_name" class="form-select" required>
-                            {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="exercise_name">Exercise Name</label>
-                        <input type="text" id="exercise_name" name="exercise_name" class="form-control" required>
-                    </div>
-                    <div class="form-group mb-3">
-                        <label for="exercise_description">Exercise Description</label>
-                        <textarea id="exercise_description" name="exercise_description" class="form-control" rows="3"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Save Exercise</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add Exercise Form Submission
+            document.getElementById('exercise_form').addEventListener('submit', function (event) {
+                event.preventDefault();
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Add Exercise Form Submission
-        document.getElementById('exercise_form').addEventListener('submit', function (event) {
-            event.preventDefault();
+                var form = event.target;
+                var day_name = form.day_name.value;
+                var category_name = form.category_name.value;
+                var exercise_name = form.exercise_name.value;
+                var exercise_description = form.exercise_description.value;
 
-            var form = event.target;
-            var day_name = form.day_name.value;
-            var category_name = form.category_name.value;
-            var exercise_name = form.exercise_name.value;
-            var exercise_description = form.exercise_description.value;
-
-            if (day_name === "" || category_name === "" || exercise_name === "" || exercise_description === "") {
-                alert("Please enter all required details.");
-                return false;
-            }
-
-            $.ajax({
-                url: "/add_exercise",
-                method: "POST",
-                data: {
-                    day_name: day_name,
-                    category_name: category_name,
-                    exercise_name: exercise_name,
-                    exercise_description: exercise_description,
-                },
-                success: function (response) {
-                    $('#exercise_entry_modal').modal('hide');
-                    if (response.status) {
-                        location.reload(true); // Hard reload the page
-                    } else {
-                        alert("Failed to add exercise. Please try again.");
-                    }
-                },
-                error: function () {
-                    alert("An error occurred. Please try again.");
+                if (day_name === "" || category_name === "" || exercise_name === "" || exercise_description === "") {
+                    alert("Please enter all required details.");
+                    return false;
                 }
+
+                $.ajax({
+                    url: "/add_exercise",
+                    method: "POST",
+                    data: {
+                        day_name: day_name,
+                        category_name: category_name,
+                        exercise_name: exercise_name,
+                        exercise_description: exercise_description,
+                    },
+                    success: function (response) {
+                        $('#exercise_entry_modal').modal('hide');
+                        if (response.status) {
+                            location.reload(true); // Hard reload the page
+                        } else {
+                            alert("Failed to add exercise. Please try again.");
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred. Please try again.");
+                    }
+                });
             });
         });
-    });
 
-</script>
+    </script>
 {% endblock %}

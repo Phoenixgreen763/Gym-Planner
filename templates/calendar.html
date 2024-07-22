@@ -1,103 +1,103 @@
 {% extends 'base.html' %}
 {% block content %}
-{% if session.get("is_admin") %}
-<div class="add_event mt-3 mb-3">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#event_entry_modal">Add Event</button></a>
-</div>
-{% endif %}
-<div id="calendar"></div>
+    {% if session.get("is_admin") %}
+    <div class="add_event mt-3 mb-3">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#event_entry_modal">Add Event</button></a>
+    </div>
+    {% endif %}
+    <div id="calendar"></div>
 
 
-<!-- Start popup dialog box -->
-<div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalLabel">Add New Event</h5>
-                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="event_name">Event name</label>
-                    <input type="text" name="event_name" id="event_name" class="form-control"
-                        placeholder="Enter your event name">
+    <!-- Start popup dialog box -->
+    <div class="modal fade" id="event_entry_modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Add New Event</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label for="event_start_date">Event start</label>
-                    <input type="date" name="event_start_date" id="event_start_date" class="form-control"
-                        placeholder="Event start date">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="event_name">Event name</label>
+                        <input type="text" name="event_name" id="event_name" class="form-control"
+                            placeholder="Enter your event name">
+                    </div>
+                    <div class="form-group">
+                        <label for="event_start_date">Event start</label>
+                        <input type="date" name="event_start_date" id="event_start_date" class="form-control"
+                            placeholder="Event start date">
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" onclick="save_event()">Save Event</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="save_event()">Save Event</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            initialView: 'dayGridMonth',
-            events: fetchEvents
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: fetchEvents
+            });
+            calendar.render();
         });
-        calendar.render();
-    });
 
-    function fetchEvents(fetchInfo, successCallback, failureCallback) {
-        $.ajax({
-            url: '/events',
-            method: 'GET',
-            success: function(data) {
-                var events = data.map(function(event) {
-                    return {
-                        id: event._id,
-                        title: event.event_name,
-                        start: event.event_start_date,
-                    };
-                });
-                successCallback(events);
-            },
-            error: function(xhr, status, error) {
-                console.error('Error fetching events:', error);
-                failureCallback(error);
+        function fetchEvents(fetchInfo, successCallback, failureCallback) {
+            $.ajax({
+                url: '/events',
+                method: 'GET',
+                success: function (data) {
+                    var events = data.map(function (event) {
+                        return {
+                            id: event._id,
+                            title: event.event_name,
+                            start: event.event_start_date,
+                        };
+                    });
+                    successCallback(events);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error fetching events:', error);
+                    failureCallback(error);
+                }
+            });
+        }
+
+        function save_event() {
+            var event_name = $("#event_name").val();
+            var event_start_date = $("#event_start_date").val();
+            if (event_name === "" || event_start_date === "") {
+                alert("Please enter all required details.");
+                return false;
             }
-        });
-    }
-
-    function save_event() {
-        var event_name = $("#event_name").val();
-        var event_start_date = $("#event_start_date").val();
-        if (event_name === "" || event_start_date === "") {
-            alert("Please enter all required details.");
+            $.ajax({
+                url: "/events",
+                method: "POST",
+                data: {
+                    event_name: event_name,
+                    event_start_date: event_start_date,
+                },
+                success: function (response) {
+                    $('#event_entry_modal').modal('hide');
+                    if (response.status) {
+                        alert(response.msg);
+                        location.reload();
+                    } else {
+                        alert(response.msg);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error saving event:', error);
+                    alert('Failed to save event');
+                }
+            });
             return false;
         }
-        $.ajax({
-            url: "/events",
-            method: "POST",
-            data: {
-                event_name: event_name,
-                event_start_date: event_start_date,
-            },
-            success: function(response) {
-                $('#event_entry_modal').modal('hide');
-                if (response.status) {
-                    alert(response.msg);
-                    location.reload();
-                } else {
-                    alert(response.msg);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error('Error saving event:', error);
-                alert('Failed to save event');
-            }
-        });
-        return false;
-    }
-</script>
+    </script>
 {% endblock %}

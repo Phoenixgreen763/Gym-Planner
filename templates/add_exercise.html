@@ -4,7 +4,8 @@
     <form method="POST" action="{{ url_for('add_exercise_list') }}">
         <div class="mb-3">
             <label for="category_name" class="form-label">Exercise Category</label>
-            <select class="form-select" aria-label="Default select example" id="category_name" name="category_name">
+            <select class="form-select" aria-label="Default select example" id="category_name" name="category_name"
+                required>
                 <option value="" disabled selected>Choose Category</option>
                 {% for category in categories %}
                 <option value="{{ category.category_name }}">{{ category.category_name }}</option>
@@ -13,11 +14,11 @@
         </div>
         <div class="mb-3">
             <label for="exercise_name" class="form-label">Exercise Name</label>
-            <input type="text" class="form-control" id="exercise_name" name="exercise_name" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="exercise_name" name="exercise_name" required>
         </div>
         <div class="mb-3">
             <label for="exercise_description" class="form-label">Exercise Description</label>
-            <input type="text" class="form-control" id="exercise_description" name="exercise_description">
+            <input type="text" class="form-control" id="exercise_description" name="exercise_description" required>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
