@@ -48,9 +48,25 @@ header .navbar {
     font-family: Merianda;
 }
 
+#list-header {
+    font-family: Merianda;
+}
+
+.list-text {
+    font-family: Merianda;
+}
+
 #planner {
     text-align: center;
     margin-bottom: 5%;
+}
+
+#planner-header {
+    font-family: Merianda;
+}
+
+.planner-text {
+    font-family: Merianda;
 }
 
 /* Custom styles to override Bootstrap accordion button styles */
