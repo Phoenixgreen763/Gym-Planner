@@ -16,40 +16,55 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * Each page of the app displays the same navbar at the top of the page.
     * This navbar includes the app name on the left, which redirects to the landing page of the app.
     * If a user is not currently logged in then 2 seperate links will be present on the navbar, these include a login and a register page.
+    * ![Logged out navbar](/static/images/logged-out-navbar.png)
     * These allow the user to register an account if they do not have one, or if they are a pre-exisitng user, will allow them to login freely.
     * If a user is already logged in, then the navbar will display 4 seperate links instead.
     * These links include exercises, planner, calendar, and logout.
+    * ![Logged in navbar](/static/images/logged-in-navbar.png)
 
 * Landing page
     * The user is initially introduced to the landing page, this displays messages based on if a user is logged in, or if they are not.
     * When a user is not logged in this page will give a welcome message, and invite them to create an account to continue.
+    * ![Logged out homepage](/static/images/logged-out-home.png)
     * When a user creates an acount and views this page it will give them a welcome message, and display their username.
     * If a user is logged in, this page will also give them a brief message describing the different uses of the app for ease of use.
+    * ![Logged in homepage](/static/images/logged-in-home.png)
 
 * Register page
     * This page allows new users to register an account.
     * This page includes a form to register an account, including the desired username and password of the user.
     * If a user attempts to enter a username that is already in use, a flash message appears to warn them off this, so they can choose a suitable username.
-    * If a user enters a unqiue username, there is a register button that will create their accountm and log them in to the site.
+    * ![Username already exists](/static/images/username-flash.png)
+    * If a user enters a unqiue username, there is a register button that will create their account and log them in to the site.
+    * ![Register form](/static/images/register.png)
     * Underneath the form there is a link for the login page, this allows users with an account to quickly redirect to their desired page.
+    * ![Login redirect](/static/images/login-redirect.png)
 
 * Login page
     * This page allows exisiting users to login to their account.
     * Like the register page, login displays a form for users.
     * This form is identical in styling to the register form, except the form button logs the user in, using the pre-exisitng data they created prior.
+    * ![Login form](/static/images/login.png)
+    * If a user inputs a wrong name, or password a flash message is shown to indicate this. 
+    * ![Wrong username/password flash](/static/images/login-error.png)
     * Similar to the register page, underneath the form is a link, this link instead redirects the user to the register page if they do not already have an account.
+    * ![Register redirect](/static/images/register-redirect.png)
   
 * Exercises page
     * This page allows users to add, edit, delete, search for and view exercises added by other users.
     * The search bar includes a search, and reset button. This allows users to search for exercises by muscle group, or exercise name. The reset button allows the user to refresh the list and show the full range of exercises.
+    * ![Search bar](/static/images/search-bar.png)
     * This page has an add exercise button for users. This lets all users add an exercise to the list. 
     * Users can also see who the exercise was submitted by.
-    * This includes exercise-category, exercise-name, and a description of the exercise.
+    * This includes exercise-category, exercise-name, and a description of the exercise
+    * ![Exercise list](/static/images/Exercise-list.png)
     * If a user attempts to submit an exercise that is already in the list, they will be given a flash message to indicate that the exercise already exists within the current list.
     * If a user is viewing an exercise they submitted, they will have the option to delete the exercise from the list, or edit the exercise.
+    * ![Edit exercise](/static/images/edit-exercise.png)
     * If the user wishes to edit their own exercise, they will be redirected to a form.
     * This will be preopulated with the exisitng information that the user previously submitted.
     * The user will have the option to cancel the edit, or submit the edit. If they choose to edit, it will update the information that is displayed on the exercise list.
+    * ![Edit form](/static/images/edit-form.png)
 
 * Planner page
     * This page allows the users to create a weekly plan for their training.
@@ -67,6 +82,12 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * This calendar spans the entirety of the page for easy readability.
     * The calendar also includes a "today" button at the top of the calendar.
     * This button allows users to easily jump back to the current date to view events.
+
+* Footer
+    * Each page also consists of a footer.
+    * This is located at the bottom of each page.
+    * It includes links to various social media platforms, and the copyright, which automatically updates each year.
+    * The colour and styling is consistent with the rest of the page to keep a uniform look as explained above.
   
 ### Features to Implement
 
