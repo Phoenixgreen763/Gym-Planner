@@ -70,10 +70,14 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * This page allows the users to create a weekly plan for their training.
     * Only exercises submitted by the user will be displayed to themselves.
     * Users can add exercises in the same format as the exercise list, with the additional ability to select which day of the week the exercise needs to be added to.
+    * ![Planner page](/static/images/planner.png)
     * Instead of the forms that the exercise list uses, the planner instead utilises a popup modal instead.
     * When a user submits the information in the modal form, it will be added to their planner, inside the specific day they selected.
-    * The user also has the ability to delete exercises that they no longer want in thei planner.
+    * ![Planner modal](/static/images/planner-modal.png)
+    * The user also has the ability to delete exercises that they no longer want in their planner.
+    * ![Delete exercise](/static/images/planner-exercise.png)
     * When a user deletes an exercise from the planner, a flash message is shown to  the user, to indicate this was successful.
+    * ![Deleted exercise](/static/images/delete-planner.png)
 
 * Calendar page
     * This page is used for displaying a calendar, containing events in the community for people to partake in.
