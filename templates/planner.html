@@ -14,7 +14,7 @@
         <h2 class="accordion-header" id="heading{{ day }}">
             <button class="accordion-button {% if not loop.first %}collapsed{% endif %}" type="button"
                 data-bs-toggle="collapse" data-bs-target="#collapse{{ day }}"
-                aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="collapse{{ day }}">
+                aria-expanded="{{ 'true' if loop.first else 'false' }}" aria-controls="collapse{{ day }}" style="color: white !important;">
                 {{ day }}
             </button>
         </h2>

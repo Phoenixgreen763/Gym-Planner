@@ -139,6 +139,8 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
 
 * On some smaller screen sizes, the calendar can sometimes display the event name too small for the user to see.
 
+* There is a bug on some mobile browers, that allows you to add exisitng exercises to the exercise list. This should not be possible, but may be due to a server-side issue when submitting the form.
+
 ## Design
 
 * Fonts
