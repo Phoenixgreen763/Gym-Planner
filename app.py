@@ -179,7 +179,7 @@ def get_exercises():
         return render_template("planner.html", exercises=exercises)
 
 
-@app.route("/add_exercise", methods=["GET", "POST"])
+@app.route("/add_exercise", methods=["POST"])
 def add_exercise():
     if request.method == "POST":
         exercise = {
@@ -190,12 +190,13 @@ def add_exercise():
             "created_by": session["user"]
         }
         mongo.db.exercises.insert_one(exercise)
-        flash("Exercise Successfully Added")
-        return redirect(url_for("planner"))
+        flash("Exercise Added")
+        return jsonify({'status': True, 'msg': 'Exercise Successfully Added'})
 
     days = mongo.db.days.find().sort("day_name", 1)
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_exercise.html", categories=categories, days=days)
+
 
 
 @app.route("/delete_exercise/<exercise_id>")

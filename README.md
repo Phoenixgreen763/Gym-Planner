@@ -134,6 +134,7 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
 
 * When adding exercises to the planner, the user has to hard reload the page at times to display this new info.
     * Methods were added in an attempt to reload the page instance, however at times this bug is still persistent.
+    * This should however now be working as intended, but has been a persistent issue.
 
 * When loading the calendar page, there are times when the events dont load correctly. This results in the user occassionaly needing to refresh the page, in order to view the events.
 
