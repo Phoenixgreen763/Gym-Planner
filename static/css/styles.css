@@ -49,7 +49,7 @@ header .navbar {
 
 /* Custom styles to override Bootstrap accordion button styles */
 .accordion-button:not(.collapsed) {
-    background-color: #fff !important; /* Change background color */
+    background-color: #007bff !important; /* Change background color */
     color: #000 !important;            /* Change text color */
     border-color: #ccc !important;     /* Change border color */
 }
@@ -58,6 +58,17 @@ header .navbar {
     filter: invert(0%) !important; /* Change icon color to black */
 }
 
+.accordion-button {
+    background-color: #007bff !important;
+}
+
+.exercise-list-accordion {
+    padding-left: 0;
+}
+
+.accordion-header {
+    color: white !important;
+}
 
 /* Footer Styles */
 

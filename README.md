@@ -137,6 +137,8 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
 
 * When loading the calendar page, there are times when the events dont load correctly. This results in the user occassionaly needing to refresh the page, in order to view the events.
 
+* On some smaller screen sizes, the calendar can sometimes display the event name too small for the user to see.
+
 ## Design
 
 * Fonts

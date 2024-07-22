@@ -1,4 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Update the copyright year
+    var currentYear = new Date().getFullYear();
+    document.getElementById('year').textContent = currentYear;
+
+    // Initialize FullCalendar
     var calendarEl = document.getElementById('calendar');
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
