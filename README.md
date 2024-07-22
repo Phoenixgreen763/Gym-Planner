@@ -61,17 +61,77 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * When a user deletes an exercise from the planner, a flash message is shown to  the user, to indicate this was successful.
 
 * Calendar page
-    * 
+    * This page is used for displaying a calendar, containing events in the community for people to partake in.
+    * There is a button like the other pages for adding events.
+    * This button is only available for admin users of the site to use, and add events to the calendar.
+    * This calendar spans the entirety of the page for easy readability.
+    * The calendar also includes a "today" button at the top of the calendar.
+    * This button allows users to easily jump back to the current date to view events.
   
 ### Features to Implement
 
+* Planner Edit form modal
+    * An edit form modal could be implemented for the planner exercises.
+    * This would allow ease of use for the user, to edit a task, instead of having to fully delete it.
+    * This was attempted, but there were consistent bugs, when trying to preopulate the form exercise categories.
+
+* User Profile 
+    * Potential to add a profile section to the app.
+    * This could be used to track specific goals that the user sets.
+    * This could include current weight, and goal weight.
+    * It could also include tracking of weekly training that has been completed.
+    * It may be engaging for the user to add "levels", this would give the user the sense of accomplishment, and add more interactivity. 
+
+* User forum
+    * This could be implemented to allow all users to share, and discuss their journey.
+    * This would bring users together more, and allow them to share information or experiences. Like the exercise list already implemented does.
+
 ## User Stories
+
+* User - A
+    * User A is a middle aged parent. They primarily use the site for utilizing their planner, and viewing community events.
+    * This user finds it difficult to manage their routine due to a busy lifestyle, so the planner enabels them to organize a routine, and easily keep track of what they need to do.
+    * They also use the calendar to see when there are suitable events to attend, as they enjoy the community aspect.
+
+* User - B
+    * User B is a teenager. This user primarily uses the exercise list, and the planner.
+    * This user is likely inexperienced, therefore they use the exercise list to learn about specific training movements to suit their needs.
+    * This user will also likely utilize the planner aswell, as it allows them to keep a routine, and maintain a consistent and easy journey in the gym.
+
+* User - C
+    * This user is an admin. They have access to all other features of the site as others, however they have the ability to add events to the community calendar.
+    * This user primarily visits the site to view the calendar and organize events. However, they still have the ability to share exercises, find exercises created by others, or even make their own plan if they desire.
+    * This user can add events so the community can view and participate.
 
 ## Testing
 
+* The testing done on the project consisted of automated validator testing to discover any errors in the code, and lighthouse was used, this was done to optomise page loading or any potential issues. Also manual user testing to find potential bugs.
+
+## Manual Testing
+
+* The site was tested by multiple freinds and family
+* Everyone found the design to be visually appealing and readable. All users found the site easy to navigate, and explained the ease of use was helpful.
+* Multiple types of devices, such as laptops, desktops, phones and tablets were used to ensure the site maintained no issues, regardless of size or hardware.
+* Manual testing from all users found no additional bugs, other than the bugs already known and accounted for below.
+* All users had no issue creating an account, or logging in.
+* Manual testing however, did show that when exercises on the list page were edited, a new exercise would be added instead and would not remove the old information. This has now been fixed, so the information stored in the database is changed, and a new form is not added instead.
+
 ## Validator Testing 
 
+* CSS Validator 
+
+* HTML Validator
+
+* Light House Testing
+    * Lighthouse was used to check for errors or optimisation issues
+    * No optimastion was necessary as a result of the light house testing.
+
 ## All Known Bugs
+
+* When adding exercises to the planner, the user has to hard reload the page at times to display this new info.
+    * Methods were added in an attempt to reload the page instance, however at times this bug is still persistent.
+
+* When loading the calendar page, there are times when the events dont load correctly. This results in the user occassionaly needing to refresh the page, in order to view the events.
 
 ## Design
 
@@ -91,7 +151,7 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * Connect the app using the GitHub repository name.
     * Allow automatic deployments, this will push through any changes made automatically. Select deploy branch and the app will be available for use.
 
-The live link can be found here -
+The live link can be found here - https://gym-planner-e895d22abc86.herokuapp.com/
 
 ## Technologies Used
 
