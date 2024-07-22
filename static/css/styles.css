@@ -38,8 +38,14 @@ header .navbar {
     background-size: 100% 100%;
 }
 
+.club-intro {
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
 .heading {
     text-align: center;
+    font-family: Merianda;
 }
 
 #planner {
@@ -74,7 +80,7 @@ header .navbar {
 
 footer {
     background-color: rgb(39, 151, 255);
-    margin-top: 2.5%;
+    margin-top: 5%;
 }
 
 footer .footer-bottom {
@@ -147,3 +153,4 @@ footer .social-links .social-link {
     text-align: center;
     background-color: rgb(39, 151, 255);
 }
+
