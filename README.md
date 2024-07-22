@@ -119,12 +119,16 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
 ## Validator Testing 
 
 * CSS Validator 
+    * [CSS results](http://jigsaw.w3.org/css-validator/validator$link)
+    * ![CSS results image](/static/images/CSS.png)
 
 * HTML Validator
 
 * Light House Testing
     * Lighthouse was used to check for errors or optimisation issues
-    * No optimastion was necessary as a result of the light house testing.
+    * The lighthouse score was 83 overall.
+    * Optimisations were made, such as deferring javscript scripts, until they were needed. This allows the page to run smoother, and have faster loading times.
+    * ![Lighthouse Score](/static/images/lighthouse.png)
 
 ## All Known Bugs
 
