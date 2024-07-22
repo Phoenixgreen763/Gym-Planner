@@ -83,14 +83,19 @@ View the live website here - https://gym-planner-e895d22abc86.herokuapp.com/
     * This page is used for displaying a calendar, containing events in the community for people to partake in.
     * There is a button like the other pages for adding events.
     * This button is only available for admin users of the site to use, and add events to the calendar.
+    * ![Admin button](/static/images/admin-button.png)
+    * This button opens a modal for adding events, similar to the planner modal.
+    * ![Event modal](/static/images/event-modal.png)
     * This calendar spans the entirety of the page for easy readability.
     * The calendar also includes a "today" button at the top of the calendar.
+    * ![Calendar page](/static/images/calendar.png)
     * This button allows users to easily jump back to the current date to view events.
 
 * Footer
     * Each page also consists of a footer.
     * This is located at the bottom of each page.
     * It includes links to various social media platforms, and the copyright, which automatically updates each year.
+    * ![Footer](/static/images/footer.png)
     * The colour and styling is consistent with the rest of the page to keep a uniform look as explained above.
   
 ### Features to Implement
