@@ -163,7 +163,7 @@ The live link can be found here - https://gym-planner-e895d22abc86.herokuapp.com
 ## Credits
 
 * Code
-    * The user authentication method used, is from the mini walkthrough project. This was reused, as it was suggested in the course material. All other code is written by the developer.
+    * The user authentication method used, is from the mini walkthrough flask project. This was reused, as it was suggested in the course material. All other code is written by the developer.
 
 * Content
     * All content was written by the developer
